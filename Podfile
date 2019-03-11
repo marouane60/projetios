@@ -8,6 +8,7 @@ target 'projet' do
   # Pods for projet
   
   pod 'Alamofire'
+  pod 'SwiftyJSON', '~> 4.0'
 
   target 'projetTests' do
     inherit! :search_paths
