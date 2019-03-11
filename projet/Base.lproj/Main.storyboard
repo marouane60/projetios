@@ -18,22 +18,45 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="tyw-ae-fTQ">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="tyw-ae-fTQ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="test" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="w4p-6Q-QIM">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" text="test" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="w4p-6Q-QIM">
                                 <rect key="frame" x="216" y="493" width="127" height="68"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oeG-8D-OT4">
+                                <rect key="frame" x="32" y="54" width="55" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Favorite"/>
+                                <connections>
+                                    <action selector="onFavorite:" destination="BYZ-38-t0r" eventType="touchDown" id="XLw-KN-tSI"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="068-B2-b3k">
+                                <rect key="frame" x="286" y="54" width="57" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Settings"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="tyw-ae-fTQ" secondAttribute="trailing" id="2gN-kc-1x7"/>
+                            <constraint firstItem="oeG-8D-OT4" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="34" id="3Ap-fZ-UHQ"/>
+                            <constraint firstItem="tyw-ae-fTQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="DqI-fk-IkG"/>
+                            <constraint firstItem="tyw-ae-fTQ" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="KxF-Rs-4z3"/>
+                            <constraint firstItem="oeG-8D-OT4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="KyT-SA-1LI"/>
+                            <constraint firstItem="068-B2-b3k" firstAttribute="baseline" secondItem="oeG-8D-OT4" secondAttribute="baseline" id="P9f-Zh-vCA"/>
+                            <constraint firstItem="068-B2-b3k" firstAttribute="trailing" secondItem="w4p-6Q-QIM" secondAttribute="trailing" id="UPX-sr-GBn"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="068-B2-b3k" secondAttribute="trailing" constant="32" id="gmY-vZ-fu8"/>
+                            <constraint firstItem="tyw-ae-fTQ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="uhb-TK-TF8"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="favoriteButton" destination="oeG-8D-OT4" id="P5E-07-lpb"/>
                         <outlet property="maxTemp" destination="w4p-6Q-QIM" id="t0y-1D-bX9"/>
                     </connections>
                 </viewController>
