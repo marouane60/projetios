@@ -10,6 +10,7 @@
 		05B0003F258E7BBB9DA96EAE /* Pods_projet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93DDAB363D62DACAFB5A6F8D /* Pods_projet.framework */; };
 		208861FAED6D30B28927DF2E /* Pods_projetTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ABE8C6019F3981636649008 /* Pods_projetTests.framework */; };
 		6A17F5A86B3C32156F170527 /* Pods_projetUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29DFF8D8FE98EB7B8D9486A8 /* Pods_projetUITests.framework */; };
+		F20A4D93223BFEEC008FB618 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20A4D92223BFEEC008FB618 /* DetailsViewController.swift */; };
 		F27BBD172232D345005FB9DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27BBD162232D345005FB9DB /* AppDelegate.swift */; };
 		F27BBD192232D345005FB9DB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27BBD182232D345005FB9DB /* ViewController.swift */; };
 		F27BBD1C2232D345005FB9DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F27BBD1A2232D345005FB9DB /* Main.storyboard */; };
@@ -47,6 +48,7 @@
 		A20A209A64C11D56FA0138EC /* Pods-projet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-projet.release.xcconfig"; path = "Pods/Target Support Files/Pods-projet/Pods-projet.release.xcconfig"; sourceTree = "<group>"; };
 		AF535FFA0B9DFCDFB1586A6B /* Pods-projetTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-projetTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-projetTests/Pods-projetTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C0400C38623B8039297FE20A /* Pods-projet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-projet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-projet/Pods-projet.debug.xcconfig"; sourceTree = "<group>"; };
+		F20A4D92223BFEEC008FB618 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		F27BBD132232D345005FB9DB /* projet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = projet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F27BBD162232D345005FB9DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F27BBD182232D345005FB9DB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 			children = (
 				F27BBD162232D345005FB9DB /* AppDelegate.swift */,
 				F27BBD182232D345005FB9DB /* ViewController.swift */,
+				F20A4D92223BFEEC008FB618 /* DetailsViewController.swift */,
 				F27BBD1A2232D345005FB9DB /* Main.storyboard */,
 				F27BBD1D2232D347005FB9DB /* Assets.xcassets */,
 				F27BBD442232D3EF005FB9DB /* background.jpg */,
@@ -399,6 +402,7 @@
 			files = (
 				F27BBD192232D345005FB9DB /* ViewController.swift in Sources */,
 				F27BBD172232D345005FB9DB /* AppDelegate.swift in Sources */,
+				F20A4D93223BFEEC008FB618 /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

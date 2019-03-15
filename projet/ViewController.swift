@@ -111,6 +111,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error \(error)")
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.destination is DetailsViewController
+        {
+            let vc = segue.destination as? DetailsViewController
+            vc?.villeRequete = villeRequete
+        }
+    }
+
 
 }
 
