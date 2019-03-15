@@ -39,6 +39,9 @@
                                 <rect key="frame" x="286" y="54" width="57" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Settings"/>
+                                <connections>
+                                    <action selector="onSetting:" destination="BYZ-38-t0r" eventType="touchDown" id="d77-hf-TKr"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -17,8 +17,25 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var favoriteButton: UIButton!
     var locationManager:CLLocationManager!
     var favorite: Bool! = false;
-    var villeParam: Bool! = false;
-    var villeRequete: String!;
+    var villeParam: String!;
+    var villeRequete: String!{
+        didSet {
+            //Get ville infos
+            print("villeset")
+            if villeRequete != nil {
+                Alamofire.request("https://api.openweathermap.org/data/2.5/weather?q=" + villeRequete + "&APPID=0fe58b4b34de9e8260b69024f643a82a").validate().responseJSON { response in
+                    switch response.result {
+                    case .success:
+                        let json = JSON(response.result.value!)
+                        
+                        print(json["name"])
+                    case .failure(let error):
+                        print(error)
+                    }
+                }
+            }
+        }
+    };
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,9 +47,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.requestAlwaysAuthorization()
     
         
-        if(villeParam){
+        if(villeParam != nil){
             
-            // villeRequete = navParams
+            villeRequete = villeParam;
             
         }else{
             let favorite =  UserDefaults.standard.string(forKey: "favorite")
@@ -49,21 +66,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             
         }
         
-        //Get ville infos
-        //TODO: add asynchrone handling
-        Alamofire.request("https://api.openweathermap.org/data/2.5/weather?q=" + villeRequete + "&APPID=0fe58b4b34de9e8260b69024f643a82a").validate().responseJSON { response in
-            switch response.result {
-            case .success:
-                let json = JSON(response.result.value!)
-                
-                print(json["name"])
-            case .failure(let error):
-                print(error)
-            }
-        }
-        
-        
-        // Onclick on the favorite button
         
     
 
@@ -95,8 +97,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
     }
     
+    // Onclick on the Settings button
+    @IBAction func onSetting(_ sender: Any) {
+        
+    }
+    
+    // Onclick on the favorite button
     @IBAction func onFavorite(_ sender: Any) {
-        UserDefaults.standard.set(villeRequete, forKey: "favorite");
+        if villeRequete != nil {        UserDefaults.standard.set(villeRequete, forKey: "favorite");
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
