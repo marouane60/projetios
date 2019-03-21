@@ -8,8 +8,9 @@
 
 import UIKit
 import Alamofire
+import CoreLocation
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController,CLLocationManagerDelegate {
     
     @IBOutlet weak var dateLabl: UILabel!
     @IBOutlet weak var weatherStatusImView: UIImageView!
@@ -21,6 +22,19 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var windDirectionLabel: UILabel!
     @IBOutlet weak var windSpeedLabel: UILabel!
     @IBOutlet weak var multiInfoView: UIView!
+    @IBOutlet weak var favoriteButton: UIButton!
+    var locationManager:CLLocationManager!
+    var favorite: Bool! = false;
+    var villeParam: String!;
+    var villeRequete: String!{
+        didSet {
+            //Get ville infos
+            print("villeset")
+            if villeRequete != nil {
+                getWsData(ville: villeRequete)
+            }
+        }
+    };
     var weatherIconId : NSNumber = NSNumber()
     
     /*
@@ -34,13 +48,42 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestAlwaysAuthorization()
+        
+        
+        if(villeParam != nil){
+            
+            villeRequete = villeParam;
+            
+        }else{
+            let favorite =  UserDefaults.standard.string(forKey: "favorite")
+            
+            if(favorite != nil){
+                
+                villeRequete = favorite;
+                
+            }else{
+                if CLLocationManager.locationServicesEnabled(){
+                    locationManager.startUpdatingLocation()
+                }
+            }
+            
+        }
+        
+        
+        
         let dateAjd = Date() // Récupération de la date d'aujourd'hui
         let formatter = DateFormatter()
         
-        getWsData(ville: "Orleans")
-        getUVfromWS()
+       // getWsData(ville: "Orleans")
+       // getUVfromWS()
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "newYork0.jpg")!)
-        weatherStatusImView.image = UIImage(named: /*self.getIconFromId(id_temps: weatherIconId.intValue) + */ "sunny_test.png")
+        weatherStatusImView.image = UIImage(named: self.getIconFromId(id_temps: weatherIconId.intValue) )
         multiInfoView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
         formatter.locale = Locale(identifier: "fr_FR")
         formatter.dateFormat = "EEEE d MMM yyyy" // Formatage français de la date
@@ -52,7 +95,8 @@ class HomeViewController: UIViewController {
      Récupère les données du webservice.
      */
     func getWsData(ville: String){
-        let url : String = "https://samples.openweathermap.org/data/2.5/weather?q=London,uk&appid=b6907d289e10d714a6e88b30761fae22"
+        print(ville)
+        let url : String = "https://api.openweathermap.org/data/2.5/weather?q="+ville+"&appid=0fe58b4b34de9e8260b69024f643a82a"
         var rep : [String : Any] = [String : Any]()
         Alamofire.request(url).responseJSON{ (reponse) in
 
@@ -65,8 +109,11 @@ class HomeViewController: UIViewController {
         }
     }
     
-    func getUVfromWS(){
-        let url = "https://samples.openweathermap.org/data/2.5/uvi?lat=37.75&lon=-122.37&appid=0fe58b4b34de9e8260b69024f643a82a"
+    func getUVfromWS(lat: NSNumber, lng: NSNumber){
+        let lat_string = String(lat.doubleValue)
+        let lng_string = String(lng.doubleValue)
+        
+        let url = "https://api.openweathermap.org/data/2.5/uvi?lat="+lat_string+"&lon="+lng_string+"&appid=0fe58b4b34de9e8260b69024f643a82a"
         var rep : [String : Any] = [String : Any]()
         Alamofire.request(url).responseJSON{ (reponse) in
             if(reponse.result.isSuccess){
@@ -88,6 +135,7 @@ class HomeViewController: UIViewController {
     func initilizeComponentsFromData(data : [String : Any] ){
         let main : [String : AnyObject] = data["main"] as! [String : AnyObject]
         let windData = data["wind"] as! [String : AnyObject]
+        let coord = data["coord"] as! [String : AnyObject]
         let weatherArray = data["weather"] as! [[String: AnyObject]]
         let weather = weatherArray[0]
         self.weatherIconId = weather["id"] as! NSNumber
@@ -96,6 +144,8 @@ class HomeViewController: UIViewController {
         let humidity : NSNumber = main["humidity"] as! NSNumber
         let windSpeed : NSNumber = windData["speed"] as! NSNumber
         let windDirection : NSNumber = windData["deg"] as! NSNumber
+        let lat : NSNumber = coord["lat"] as! NSNumber
+        let lng : NSNumber = coord["lon"] as! NSNumber
         
         villeLabel.text = (data["name"] as! String).capitalized
         tempLabel.text = String((main["temp"] as! NSNumber).intValue) + "°C"
@@ -103,6 +153,42 @@ class HomeViewController: UIViewController {
         humidityLabel.text = "Humidité \n" + String(humidity.intValue) + "%"
         windDirectionLabel.text = "Dir-Vent \n" + String(windDirection.intValue)
         windSpeedLabel.text = "Vitesse \n" + String(windSpeed.intValue) + " km/h"
+        
+        getUVfromWS(lat: lat, lng: lng);
+        
+        print(villeLabel.text)
+
+    }
+    
+    
+    @IBAction func onFavorite(_ sender: Any) {
+        if villeRequete != nil {        UserDefaults.standard.set(villeRequete, forKey: "favorite");
+        }
+    }
+    
+    // https://stackoverflow.com/questions/25296691/get-users-current-location-coordinates
+    //MARK: - location delegate methods
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let userLocation :CLLocation = locations[0] as CLLocation
+        
+        print("user latitude = \(userLocation.coordinate.latitude)")
+        print("user longitude = \(userLocation.coordinate.longitude)")
+        
+        let geocoder = CLGeocoder()
+        geocoder.reverseGeocodeLocation(userLocation) { (placemarks, error) in
+            if (error != nil){
+                print("error in reverseGeocode")
+            }
+            let placemark = placemarks! as [CLPlacemark]
+            if placemark.count>0{
+                let placemark = placemarks![0];
+                let locality = placemark.locality!;
+                let localityFormatted = locality.replacingOccurrences(of: " ", with: "%20").replacingOccurrences(of: "é", with: "e")
+                self.villeRequete = localityFormatted;
+                
+            }
+        }
+        
     }
     
     func getIconFromId(id_temps: Int) -> String {

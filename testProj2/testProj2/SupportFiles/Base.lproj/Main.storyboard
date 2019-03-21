@@ -30,6 +30,10 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HEI-qJ-7JB">
                                 <rect key="frame" x="16" y="32" width="50" height="50"/>
                                 <state key="normal" image="starIconWhite.png"/>
+                                <connections>
+                                    <action selector="onFavorite:" destination="KAQ-6L-1uT" eventType="touchUpInside" id="5B7-PO-hjx"/>
+                                    <action selector="onFavorite:" destination="KAQ-6L-1uT" eventType="touchDown" id="cgY-7e-P93"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6Rl-ny-F8v">
                                 <rect key="frame" x="0.0" y="104" width="375" height="397"/>
