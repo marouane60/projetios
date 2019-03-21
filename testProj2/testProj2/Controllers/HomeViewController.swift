@@ -180,12 +180,14 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate {
                 print("error in reverseGeocode")
             }
             let placemark = placemarks! as [CLPlacemark]
-            if placemark.count>0{
-                let placemark = placemarks![0];
-                let locality = placemark.locality!;
-                let localityFormatted = locality.replacingOccurrences(of: " ", with: "%20").replacingOccurrences(of: "é", with: "e")
-                self.villeRequete = localityFormatted;
-                
+            if(self.villeRequete == nil){
+                if placemark.count>0{
+                    let placemark = placemarks![0];
+                    let locality = placemark.locality!;
+                    let localityFormatted = locality.replacingOccurrences(of: " ", with: "%20").replacingOccurrences(of: "é", with: "e")
+                    self.villeRequete = localityFormatted;
+                    
+                }
             }
         }
         
