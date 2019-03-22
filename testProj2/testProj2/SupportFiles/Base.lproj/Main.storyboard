@@ -237,7 +237,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="1AC-9a-RsJ">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="358"/>
+                                <rect key="frame" x="0.0" y="61" width="375" height="297"/>
                             </mapView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Oqi-ha-mt5">
                                 <rect key="frame" x="168" y="420" width="39" height="37"/>
@@ -248,7 +248,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="1AC-9a-RsJ" firstAttribute="top" secondItem="Svt-Cf-ut6" secondAttribute="top" id="5P9-e6-FeL"/>
+                            <constraint firstItem="1AC-9a-RsJ" firstAttribute="top" secondItem="Svt-Cf-ut6" secondAttribute="top" constant="61" id="5P9-e6-FeL"/>
                             <constraint firstItem="YmY-cK-636" firstAttribute="bottom" secondItem="WxS-bz-w6u" secondAttribute="bottom" id="9Gj-7e-gt1"/>
                             <constraint firstItem="YmY-cK-636" firstAttribute="top" secondItem="WxS-bz-w6u" secondAttribute="top" constant="337" id="Mc5-zH-a7p"/>
                             <constraint firstItem="YmY-cK-636" firstAttribute="trailing" secondItem="1AC-9a-RsJ" secondAttribute="trailing" id="OgZ-HL-DSj"/>
