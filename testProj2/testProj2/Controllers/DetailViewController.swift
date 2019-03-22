@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import Alamofire
 
 class DetailsViewController: UIViewController, UIScrollViewDelegate {
     
@@ -22,7 +23,7 @@ class DetailsViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         
         scrollView.delegate = self;
-        slides = createSlides()
+        slides = getWsData(ville: villeRequete)
         setupSlideScrollView(slides: slides)
         
         pageControl.numberOfPages = slides.count
@@ -71,6 +72,8 @@ class DetailsViewController: UIViewController, UIScrollViewDelegate {
     
     func createSlides() -> [Slide] {
         
+        
+        
         let slide1:Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
         slide1.imageView.image = UIImage(named: "newYork1.jpg")
 
@@ -80,13 +83,31 @@ class DetailsViewController: UIViewController, UIScrollViewDelegate {
         return [slide1, slide2]
     }
     
-    public func scrollViewDidScroll(_ scrollView: UIScrollView!) {
-        let pageIndex = round(scrollView.contentOffset.x/view.frame.width)
-        pageControl.currentPage = Int(1)
+    func getWsData(ville: String)-> [Slide]{
+        print(ville)
+        let url : String =  "https://api.teleport.org/api/urban_areas/slug:"+ville+"/images/"
+        var rep : [String : Any] = [String : Any]()
+        var slide1:Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
+        var slide2:Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
+        Alamofire.request(url).responseJSON{ (reponse) in
+            
+            if(reponse.result.isSuccess){
+                rep = (reponse.result.value! as? [String : Any])!
+
+                print(rep["photos"])
+
+                slide1.imageView.image = UIImage(named: "newYork1.jpg")
+                slide2.imageView.image = UIImage(named: "newYork0.jpg")
+                
+            }else{
+                print("Erreur : \(reponse.result.error!)")
+            }
+        }
         
 
+        
+        return [slide1, slide2];
     }
-
     /*
      // MARK: - Navigation
      
