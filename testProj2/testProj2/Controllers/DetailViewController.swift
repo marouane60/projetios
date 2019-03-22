@@ -59,6 +59,7 @@ class DetailsViewController: UIViewController, UIScrollViewDelegate {
         // Do any additional setup after loading the view.
     }
     
+    // Regle l affichage des slides
     func setupSlideScrollView(slides : [Slide]) {
         scrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
         scrollView.contentSize = CGSize(width: view.frame.width * CGFloat(slides.count), height: view.frame.height)
@@ -70,19 +71,7 @@ class DetailsViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     
-    func createSlides() -> [Slide] {
-        
-        
-        
-        let slide1:Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
-        slide1.imageView.image = UIImage(named: "newYork1.jpg")
-
-        let slide2:Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
-        slide2.imageView.image = UIImage(named: "newYork0.jpg")
-
-        return [slide1, slide2]
-    }
-    
+    // Appelle le WS pour avoir l image de la ville et retourne les sliders
     func getWsData(ville: String)-> [Slide]{
         print(ville)
         let url : String =  "https://api.teleport.org/api/urban_areas/slug:"+ville+"/images/"
@@ -93,18 +82,22 @@ class DetailsViewController: UIViewController, UIScrollViewDelegate {
             
             if(reponse.result.isSuccess){
                 rep = (reponse.result.value! as? [String : Any])!
+                let main : [[String:Any]]  = rep["photos"] as! [[String:Any]]
+                let images = main[0]["image"] as! [String : AnyObject]
+                let firstImg = images["mobile"] as! String;
 
-                print(rep["photos"])
+                let firstUrl = URL(string: firstImg)
 
-                slide1.imageView.image = UIImage(named: "newYork1.jpg")
+                let firstImgResponse = try? Data(contentsOf: firstUrl!);
+                
+                //Création des slides
+                slide1.imageView.image = UIImage(data: firstImgResponse!)
                 slide2.imageView.image = UIImage(named: "newYork0.jpg")
                 
             }else{
                 print("Erreur : \(reponse.result.error!)")
             }
         }
-        
-
         
         return [slide1, slide2];
     }

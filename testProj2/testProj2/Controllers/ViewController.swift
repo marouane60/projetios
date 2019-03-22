@@ -73,7 +73,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if segue.destination is DetailsViewController
         {
             let vc = segue.destination as? DetailsViewController
-            vc?.villeRequete = "paris"
+            vc?.villeRequete = "toronto"
         }
     }
 }
