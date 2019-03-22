@@ -22,7 +22,15 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate {
     @IBOutlet weak var windDirectionLabel: UILabel!
     @IBOutlet weak var windSpeedLabel: UILabel!
     @IBOutlet weak var multiInfoView: UIView!
-    @IBOutlet weak var favoriteButton: UIButton!
+    @IBOutlet weak var favoriteButton: UIButton!/*{
+        didSet {
+            if(UserDefaults.standard.string(forKey: "favorite") != nil){
+                favoriteButton.setImage(UIImage(named: "starIconFilledWhite.png"), for: .normal);
+            }
+        }
+    };*/
+    
+    
     var locationManager:CLLocationManager!
     var favorite: Bool! = false;
     var villeParam: String!;
@@ -66,7 +74,8 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate {
             if(favorite != nil){
                 
                 villeRequete = favorite;
-                
+    
+                //
             }else{
                 if CLLocationManager.locationServicesEnabled(){
                     locationManager.startUpdatingLocation()
@@ -163,6 +172,7 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate {
     
     @IBAction func onFavorite(_ sender: Any) {
         if villeRequete != nil {        UserDefaults.standard.set(villeRequete, forKey: "favorite");
+          //  favoriteButton.setImage(UIImage(named: "starIconFilledWhite.png"), for: .normal)
         }
     }
     
