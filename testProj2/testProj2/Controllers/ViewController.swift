@@ -58,8 +58,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
-            PopOverViewController.names.append(ViewController.villes[indexPath.row]) //On réinsère la ville supprimée dans la liste des villes du popup
-            PopOverViewController.names.sort()
             ViewController.villes.remove(at: indexPath.row) //On supprime la vile de la liste des favoris
             tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
         }
@@ -68,5 +66,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // Close PopUp
     @IBAction func closePopup(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.destination is DetailsViewController
+        {
+            let vc = segue.destination as? DetailsViewController
+            vc?.villeRequete = "orleans"
+        }
     }
 }
