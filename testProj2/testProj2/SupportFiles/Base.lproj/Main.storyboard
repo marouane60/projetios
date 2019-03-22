@@ -150,6 +150,7 @@
                     <connections>
                         <outlet property="UVLabel" destination="3QR-bo-ODZ" id="rCW-7G-rO2"/>
                         <outlet property="dateLabl" destination="naY-TB-osx" id="Xt1-Pt-WzW"/>
+                        <outlet property="favoriteButton" destination="HEI-qJ-7JB" id="Gzs-v2-e5k"/>
                         <outlet property="humidityLabel" destination="SRs-MS-Nnx" id="otx-qS-lh4"/>
                         <outlet property="minMaxLabel" destination="BNT-xL-nsq" id="AaW-hA-j9m"/>
                         <outlet property="multiInfoView" destination="mZT-5I-Scl" id="9P3-y9-AoL"/>

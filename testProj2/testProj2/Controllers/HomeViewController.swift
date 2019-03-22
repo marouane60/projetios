@@ -72,7 +72,8 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate {
             let favorite =  UserDefaults.standard.string(forKey: "favorite")
             
             if(favorite != nil){
-                
+                favoriteButton.setImage(UIImage(named: "starIconFilledWhite"), for: .normal);
+
                 villeRequete = favorite;
     
                 //
@@ -152,15 +153,18 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate {
         let max : NSNumber = main["temp_max"] as! NSNumber
         let humidity : NSNumber = main["humidity"] as! NSNumber
         let windSpeed : NSNumber = windData["speed"] as! NSNumber
-        let windDirection : NSNumber = windData["deg"] as! NSNumber
+        var windDirection : NSNumber = 0;
+        if(windData["deg"] != nil){
+            windDirection = windData["deg"] as! NSNumber
+        }
         let lat : NSNumber = coord["lat"] as! NSNumber
         let lng : NSNumber = coord["lon"] as! NSNumber
         
         villeLabel.text = (data["name"] as! String).capitalized
-        tempLabel.text = String((main["temp"] as! NSNumber).intValue) + "°C"
-        minMaxLabel.text = String(min.intValue) + "°C /" + String(max.intValue) + "°C"
+        tempLabel.text = String((main["temp"] as! NSNumber).intValue - 273) + "°C"
+        minMaxLabel.text = String(min.intValue - 273) + "°C /" + String(max.intValue - 273) + "°C"
         humidityLabel.text = "Humidité \n" + String(humidity.intValue) + "%"
-        windDirectionLabel.text = "Dir-Vent \n" + String(windDirection.intValue)
+        windDirectionLabel.text = "Dir-Vent \n" + getDirFromDeg(deg: windDirection.intValue)
         windSpeedLabel.text = "Vitesse \n" + String(windSpeed.intValue) + " km/h"
         
         getUVfromWS(lat: lat, lng: lng);
@@ -201,6 +205,25 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate {
             }
         }
         
+    }
+    
+    func getDirFromDeg(deg: Int) -> String {
+        switch (deg) {
+            case 320...360 :
+                return "Nord"
+            
+            case 1...140 :
+                return "Est"
+            
+            case 140...220 :
+                return "Sud"
+            
+            case 220...320 :
+                return "Ouest"
+            default :
+                return "Pas de vent"
+        }
+
     }
     
     func getIconFromId(id_temps: Int) -> String {
