@@ -174,9 +174,9 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate {
     }
     
     
-    @IBAction func onFavorite(_ sender: Any) {
+    @IBAction func onFavorite(_ sender: UIButton) {
         if villeRequete != nil {        UserDefaults.standard.set(villeRequete, forKey: "favorite");
-          //  favoriteButton.setImage(UIImage(named: "starIconFilledWhite.png"), for: .normal)
+          sender.setImage(UIImage(named: "starIconFilledWhite.png"), for: .normal)
         }
     }
     
