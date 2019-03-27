@@ -90,9 +90,16 @@ class DetailsViewController: UIViewController, UIScrollViewDelegate {
 
                 let firstImgResponse = try? Data(contentsOf: firstUrl!);
                 
+                let tapGestureRecognizer1 = UITapGestureRecognizer(target: self, action: #selector(self.imageTapped(tapGestureRecognizer:)))
+                let tapGestureRecognizer2 = UITapGestureRecognizer(target: self, action: #selector(self.imageTapped(tapGestureRecognizer:)))
+
                 //Création des slides
                 slide1.imageView.image = UIImage(data: firstImgResponse!)
+                slide1.addGestureRecognizer(tapGestureRecognizer1);
+
                 slide2.imageView.image = UIImage(named: "newYork0.jpg")
+                slide2.addGestureRecognizer(tapGestureRecognizer2);
+
                 
             }else{
                 print("Erreur : \(reponse.result.error!)")
@@ -100,6 +107,32 @@ class DetailsViewController: UIViewController, UIScrollViewDelegate {
         }
         
         return [slide1, slide2];
+    }
+    
+    //https://stackoverflow.com/questions/34694377/swift-how-can-i-make-an-image-full-screen-when-clicked-and-then-original-size
+    
+    @IBAction func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
+        
+        print("testest")
+        // let imageView = tapGestureRecognizer.view as! UIImageView
+        let slide = tapGestureRecognizer.view as! Slide
+        let imageView = slide.imageView as! UIImageView
+        let newImageView = UIImageView(image: imageView.image)
+        newImageView.frame = UIScreen.main.bounds
+        newImageView.backgroundColor = .black
+        newImageView.contentMode = .scaleAspectFit
+        newImageView.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
+        newImageView.addGestureRecognizer(tap)
+        self.view.addSubview(newImageView)
+        self.navigationController?.isNavigationBarHidden = true
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    @objc func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
+        self.navigationController?.isNavigationBarHidden = false
+        self.tabBarController?.tabBar.isHidden = false
+        sender.view?.removeFromSuperview()
     }
     /*
      // MARK: - Navigation
