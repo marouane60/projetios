@@ -9,19 +9,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBOutlet weak var mainTableView: UITableView!
     
-    static var villes: [String] = []
-    //var weather : WeatherData?
+    static var villes: Array<String> = Array<String>()
+    
+    var villeRequete: String!;
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //let bckgColor = UIColor(red: 9/255.0, green: 0/255.0, blue: 114/255.0, alpha: 1.0)
         
-        UserDefaults.standard.set([String](), forKey:"villesChoisies")
-        
+        if(isKeyPresentInUserDefaults(key: "villesChoisies")){
+            ViewController.villes = (UserDefaults.standard.array(forKey: "villesChoisies") as! Array<String>)
+        }
+        print(ViewController.villes)
         btnSelect.backgroundColor = .clear
-        btnSelect.layer.cornerRadius = 5
-        btnSelect.layer.borderWidth = 0.5
-        btnSelect.layer.borderColor = UIColor.lightGray.cgColor
         
         mainTableView.dataSource = self
         mainTableView.tableFooterView = UIView(frame: .zero)
@@ -29,12 +28,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "newYork0.jpg")!)
         
-        
-        //mainTableView.backgroundColor = bckgColor;
-        
-        //self.weather = WeatherData()
-                                                                        // il faudra qu'on mette la ville actuelle et notre apikey
-        
+    }
+    func isKeyPresentInUserDefaults(key: String) -> Bool {
+        return UserDefaults.standard.object(forKey: key) != nil
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -52,14 +48,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return cell
     }
     
+    
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
-            ViewController.villes.remove(at: indexPath.row) //On supprime la vile de la liste des favoris
-            tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
+            SearchViewController.citiesCapitals.append(ViewController.villes[indexPath.row]) //On réinsère la ville supprimée dans la liste des villes du popup
+            SearchViewController.citiesCapitals.sort()
+            //On suprime le favoris de la mémoire du tel:
+            var favs = UserDefaults.standard.object(forKey: "villesChoisies") as! Array<String>
+            favs.remove(at: indexPath.row)
+            UserDefaults.standard.set(favs, forKey:"villesChoisies") //mise à jour
+            
+            tableView.reloadData()
         }
     }
     
@@ -68,12 +71,26 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         dismiss(animated: true, completion: nil)
     }
     
+    
+    // Select item from tableView
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //
+        //let cell = tableView.cellForRow(at: indexPath) as! TableViewCell
+
+        self.villeRequete = tableView.cellForRow(at: indexPath)?.textLabel?.text
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        if segue.destination is DetailsViewController
+        if segue.destination is HomeViewController
         {
-            let vc = segue.destination as? DetailsViewController
-            vc?.villeRequete = "toronto"
+            let vc = segue.destination as? HomeViewController
+            vc?.villeParam = self.villeRequete
+            print(self.villeRequete)
         }
     }
 }
+
+
+
+

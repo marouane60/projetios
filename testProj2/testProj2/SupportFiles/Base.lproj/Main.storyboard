@@ -181,11 +181,14 @@
                                 <rect key="frame" x="309" y="34" width="50" height="50"/>
                                 <state key="normal" image="plusIconWhite.png"/>
                                 <connections>
-                                    <segue destination="qom-Nt-gDN" kind="showDetail" id="K5f-Ti-Pap"/>
+                                    <segue destination="2NL-jM-RZT" kind="popoverPresentation" popoverAnchorView="rNz-Gh-NNW" id="quQ-R6-bRM">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" alpha="0.59999999999999998" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3Sq-Ae-z12">
+                            <tableView clipsSubviews="YES" alpha="0.59999999999999998" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3Sq-Ae-z12">
                                 <rect key="frame" x="80" y="196" width="215" height="274"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="10" reuseIdentifier="mainCell" id="IKq-XE-uSO">
@@ -196,26 +199,19 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="KAQ-6L-1uT" kind="show" id="dr3-tI-BpI"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5oO-qx-2r0">
-                                <rect key="frame" x="60" y="168" width="255" height="331"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="5oO-qx-2r0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="60" id="1Bd-eP-Fbg"/>
-                            <constraint firstItem="5oO-qx-2r0" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Afm-FF-as3"/>
-                            <constraint firstItem="5oO-qx-2r0" firstAttribute="top" secondItem="oAC-0W-iPQ" secondAttribute="bottom" constant="84" id="C0b-aj-E9n"/>
                             <constraint firstItem="rNz-Gh-NNW" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="14" id="Pcc-Od-xYw"/>
                             <constraint firstItem="oAC-0W-iPQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Prq-eA-yps"/>
                             <constraint firstItem="rNz-Gh-NNW" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="bxw-Ht-pMc"/>
                             <constraint firstItem="rNz-Gh-NNW" firstAttribute="top" secondItem="oAC-0W-iPQ" secondAttribute="top" id="eZW-21-MPg"/>
-                            <constraint firstItem="5oO-qx-2r0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kNR-CI-TrL"/>
-                            <constraint firstItem="5oO-qx-2r0" firstAttribute="centerX" secondItem="3Sq-Ae-z12" secondAttribute="centerX" id="kkA-S6-68M"/>
-                            <constraint firstItem="5oO-qx-2r0" firstAttribute="centerY" secondItem="3Sq-Ae-z12" secondAttribute="centerY" id="tix-RE-ZTc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -269,7 +265,64 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wq5-So-0nV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="919.20000000000005" y="-108.39580209895054"/>
+            <point key="canvasLocation" x="2577" y="20"/>
+        </scene>
+        <!--Search View Controller-->
+        <scene sceneID="dXm-US-iAg">
+            <objects>
+                <viewController id="2NL-jM-RZT" customClass="SearchViewController" customModule="testProj2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zER-lT-ITK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k8v-KP-vsP">
+                                <rect key="frame" x="0.0" y="30" width="375" height="56"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="barTintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="2NL-jM-RZT" id="Rca-f1-sB7"/>
+                                </connections>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OIa-8V-pBI">
+                                <rect key="frame" x="0.0" y="86" width="375" height="581"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="resCell" id="Meu-fi-GN2">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Meu-fi-GN2" id="Uqf-Ny-DXN">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="2NL-jM-RZT" id="Vr8-TY-Sx8"/>
+                                    <outlet property="delegate" destination="2NL-jM-RZT" id="c6f-IP-9Bg"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="k8v-KP-vsP" secondAttribute="trailing" id="0OZ-Ej-m71"/>
+                            <constraint firstItem="k8v-KP-vsP" firstAttribute="top" secondItem="TCW-dm-gwL" secondAttribute="top" constant="10" id="0hr-B1-bwy"/>
+                            <constraint firstItem="OIa-8V-pBI" firstAttribute="bottom" secondItem="TCW-dm-gwL" secondAttribute="bottom" id="EH1-cv-Ez1"/>
+                            <constraint firstItem="OIa-8V-pBI" firstAttribute="trailing" secondItem="k8v-KP-vsP" secondAttribute="trailing" id="ben-GY-AN0"/>
+                            <constraint firstItem="k8v-KP-vsP" firstAttribute="leading" secondItem="zER-lT-ITK" secondAttribute="leading" id="f2C-Ks-bxe"/>
+                            <constraint firstItem="OIa-8V-pBI" firstAttribute="top" secondItem="k8v-KP-vsP" secondAttribute="bottom" id="x1J-oe-XlD"/>
+                            <constraint firstItem="OIa-8V-pBI" firstAttribute="leading" secondItem="k8v-KP-vsP" secondAttribute="leading" id="xx6-L8-C7I"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="TCW-dm-gwL"/>
+                    </view>
+                    <connections>
+                        <outlet property="resTableView" destination="OIa-8V-pBI" id="vor-X6-Dh7"/>
+                        <outlet property="searchBar" destination="k8v-KP-vsP" id="Ps3-zD-QTl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ozI-ow-Chy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1301.5999999999999" y="19.340329835082461"/>
         </scene>
     </scenes>
     <resources>

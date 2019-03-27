@@ -10,6 +10,7 @@
 		0B438413CAFD4D62B3F3ED84 /* Pods_testProj2UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36D9CF5103F02E758C401EF5 /* Pods_testProj2UITests.framework */; };
 		ADB34A1D2E5263F2883AB0D4 /* Pods_testProj2Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C45DFE00250D2D9F82B3248 /* Pods_testProj2Tests.framework */; };
 		DDDD8BC27D19E11AE0233170 /* Pods_testProj2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2D73519B66831BC7ACECF19 /* Pods_testProj2.framework */; };
+		F255CCA8224BED7D00FAFA1D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F255CCA7224BED7D00FAFA1D /* SearchViewController.swift */; };
 		F257A56B223BB48100DE5647 /* homeIconWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = F257A56A223BB48100DE5647 /* homeIconWhite.png */; };
 		F257A56F223BB49D00DE5647 /* starIconWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = F257A56C223BB49C00DE5647 /* starIconWhite.png */; };
 		F257A570223BB49D00DE5647 /* starIconFilledWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = F257A56D223BB49C00DE5647 /* starIconFilledWhite.png */; };
@@ -73,6 +74,7 @@
 		83F12C15DE8212F756B5606B /* Pods-testProj2UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-testProj2UITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-testProj2UITests/Pods-testProj2UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8C45DFE00250D2D9F82B3248 /* Pods_testProj2Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_testProj2Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2D73519B66831BC7ACECF19 /* Pods_testProj2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_testProj2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F255CCA7224BED7D00FAFA1D /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		F257A56A223BB48100DE5647 /* homeIconWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = homeIconWhite.png; sourceTree = "<group>"; };
 		F257A56C223BB49C00DE5647 /* starIconWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starIconWhite.png; sourceTree = "<group>"; };
 		F257A56D223BB49C00DE5647 /* starIconFilledWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starIconFilledWhite.png; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				F2648B772211B89C00724A09 /* ViewController.swift */,
+				F255CCA7224BED7D00FAFA1D /* SearchViewController.swift */,
 				F283A7282236C33F006738DA /* HomeViewController.swift */,
 				F2BD7474224530190005A6E8 /* DetailViewController.swift */,
 			);
@@ -539,6 +542,7 @@
 			files = (
 				F2648B782211B89C00724A09 /* ViewController.swift in Sources */,
 				F273122B22315AFA00F7C826 /* WeatherData.swift in Sources */,
+				F255CCA8224BED7D00FAFA1D /* SearchViewController.swift in Sources */,
 				F2648B762211B89C00724A09 /* AppDelegate.swift in Sources */,
 				F2BD7475224530190005A6E8 /* DetailViewController.swift in Sources */,
 				F2BD74772245350B0005A6E8 /* Slide.swift in Sources */,

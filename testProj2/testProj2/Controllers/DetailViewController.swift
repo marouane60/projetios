@@ -113,7 +113,6 @@ class DetailsViewController: UIViewController, UIScrollViewDelegate {
     
     @IBAction func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
         
-        print("testest")
         // let imageView = tapGestureRecognizer.view as! UIImageView
         let slide = tapGestureRecognizer.view as! Slide
         let imageView = slide.imageView as! UIImageView
