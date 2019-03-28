@@ -16,6 +16,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        mainTableView.delegate = self
+        mainTableView.dataSource = self
+
+        
         if(isKeyPresentInUserDefaults(key: "villesChoisies")){
             ViewController.villes = (UserDefaults.standard.array(forKey: "villesChoisies") as! Array<String>)
         }
@@ -76,8 +80,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //
         //let cell = tableView.cellForRow(at: indexPath) as! TableViewCell
-
+        print("test")
+        let indexPath = tableView.indexPathForSelectedRow!
+        let currentCell = tableView.cellForRow(at:indexPath)! as UITableViewCell
+        
+        tableView.deselectRow(at: indexPath, animated: true)
         self.villeRequete = tableView.cellForRow(at: indexPath)?.textLabel?.text
+
+        performSegue(withIdentifier: "segue", sender: indexPath)
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
@@ -86,7 +97,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         {
             let vc = segue.destination as? HomeViewController
             vc?.villeParam = self.villeRequete
-            print(self.villeRequete)
         }
     }
 }

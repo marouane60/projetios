@@ -71,6 +71,7 @@ class DetailsViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     
+    //johann.soum@gmail.com
     // Appelle le WS pour avoir l image de la ville et retourne les sliders
     func getWsData(ville: String)-> [Slide]{
         print(ville)
