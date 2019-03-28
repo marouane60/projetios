@@ -13,9 +13,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     var villeRequete: String!;
     
+    var aide: Bool!;
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        aide = false;
         mainTableView.delegate = self
         mainTableView.dataSource = self
 
@@ -47,9 +50,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "mainCell")!
+        cell.accessoryType = .detailDisclosureButton
         cell.textLabel?.text = ViewController.villes[indexPath.row]
         cell.textLabel?.textColor = UIColor.white
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        
+        aide = true;
+        let currentCell = tableView.cellForRow(at:indexPath)! as UITableViewCell
+        currentCell.selectionStyle = .none
+        self.villeRequete = tableView.cellForRow(at: indexPath)?.textLabel?.text
+        tableView.deselectRow(at: indexPath, animated: true)
+
+        performSegue(withIdentifier: "detailSegue", sender: indexPath)
     }
     
     
@@ -80,14 +95,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //
         //let cell = tableView.cellForRow(at: indexPath) as! TableViewCell
-        print("test")
-        let indexPath = tableView.indexPathForSelectedRow!
-        let currentCell = tableView.cellForRow(at:indexPath)! as UITableViewCell
-        
-        tableView.deselectRow(at: indexPath, animated: true)
-        self.villeRequete = tableView.cellForRow(at: indexPath)?.textLabel?.text
-
-        performSegue(withIdentifier: "segue", sender: indexPath)
+        if (aide == false){
+            let indexPath = tableView.indexPathForSelectedRow!
+            let currentCell = tableView.cellForRow(at:indexPath)! as UITableViewCell
+            
+            tableView.deselectRow(at: indexPath, animated: true)
+            self.villeRequete = tableView.cellForRow(at: indexPath)?.textLabel?.text
+            
+            performSegue(withIdentifier: "segue", sender: indexPath)
+        }
 
     }
     
@@ -97,6 +113,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         {
             let vc = segue.destination as? HomeViewController
             vc?.villeParam = self.villeRequete
+        }
+        
+        if segue.destination is DetailsViewController
+        {
+            let vc = segue.destination as? DetailsViewController
+            vc?.villeRequete = self.villeRequete
         }
     }
 }

@@ -220,6 +220,7 @@
                         <outlet property="btnSelect" destination="rNz-Gh-NNW" id="eC6-yB-v0m"/>
                         <outlet property="mainTableView" destination="3Sq-Ae-z12" id="mJT-SU-8ZT"/>
                         <segue destination="KAQ-6L-1uT" kind="show" identifier="segue" id="cEg-C8-Nek"/>
+                        <segue destination="qom-Nt-gDN" kind="show" identifier="detailSegue" id="sKL-Fp-yea"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
