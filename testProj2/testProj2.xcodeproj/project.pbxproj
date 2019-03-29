@@ -45,6 +45,7 @@
 		F2DA968C2244D66B00795A8D /* cloudy2.png in Resources */ = {isa = PBXBuildFile; fileRef = F2DA96812244D66A00795A8D /* cloudy2.png */; };
 		F2DA968D2244D66B00795A8D /* light_rain.png in Resources */ = {isa = PBXBuildFile; fileRef = F2DA96822244D66A00795A8D /* light_rain.png */; };
 		F2DA968E2244D66B00795A8D /* overcast.png in Resources */ = {isa = PBXBuildFile; fileRef = F2DA96832244D66B00795A8D /* overcast.png */; };
+		F2F6F837224E8F0E00B0774D /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = F2F6F836224E8F0E00B0774D /* camera.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +116,7 @@
 		F2DA96812244D66A00795A8D /* cloudy2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cloudy2.png; path = ../../../../../../Downloads/meteo/cloudy2.png; sourceTree = "<group>"; };
 		F2DA96822244D66A00795A8D /* light_rain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = light_rain.png; path = ../../../../../../Downloads/meteo/light_rain.png; sourceTree = "<group>"; };
 		F2DA96832244D66B00795A8D /* overcast.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = overcast.png; path = ../../../../../../Downloads/meteo/overcast.png; sourceTree = "<group>"; };
+		F2F6F836224E8F0E00B0774D /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +197,7 @@
 			children = (
 				F2DA96782244D65400795A8D /* meteo */,
 				F283A71C2236ABC4006738DA /* newYork1.jpg */,
+				F2F6F836224E8F0E00B0774D /* camera.png */,
 				F283A71E2236AC01006738DA /* newYork0.jpg */,
 				F283A7202236B9DB006738DA /* plusIcon.png */,
 				F283A72A2236CBD8006738DA /* favIcon.png */,
@@ -404,6 +407,7 @@
 				F2DA96872244D66B00795A8D /* tstorm3.png in Resources */,
 				F257A570223BB49D00DE5647 /* starIconFilledWhite.png in Resources */,
 				F2DA968B2244D66B00795A8D /* shower3.png in Resources */,
+				F2F6F837224E8F0E00B0774D /* camera.png in Resources */,
 				F2DA968E2244D66B00795A8D /* overcast.png in Resources */,
 				F2DA96842244D66B00795A8D /* chi_pas.png in Resources */,
 				F2DA96892244D66B00795A8D /* snow4.png in Resources */,

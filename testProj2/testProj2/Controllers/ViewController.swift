@@ -50,13 +50,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "mainCell")!
-        cell.accessoryType = .detailDisclosureButton
+        
+        
+        let button = UIButton(frame: CGRect(x: 300, y: 0, width: 100, height: 50))
+        button.setImage(UIImage(named: "camera"), for: .normal)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(buttonAction))
+        button.addGestureRecognizer(tapGesture)
+        
+        
+        cell.addSubview(button)
+        
         cell.textLabel?.text = ViewController.villes[indexPath.row]
         cell.textLabel?.textColor = UIColor.white
         return cell
     }
     
-    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+    /*func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         
         aide = true;
         let currentCell = tableView.cellForRow(at:indexPath)! as UITableViewCell
@@ -65,7 +74,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.deselectRow(at: indexPath, animated: true)
 
         performSegue(withIdentifier: "detailSegue", sender: indexPath)
-    }
+    }*/
     
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -105,6 +114,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             performSegue(withIdentifier: "segue", sender: indexPath)
         }
 
+    }
+    
+    @objc func buttonAction(_ sender: UITapGestureRecognizer) {
+        let touch = sender.location(in: mainTableView)
+        
+        aide = true;
+        let indexPath = mainTableView.indexPathForRow(at:touch)!
+        let currentCell = mainTableView.cellForRow(at:indexPath)! as UITableViewCell
+        currentCell.selectionStyle = .none
+        self.villeRequete = mainTableView.cellForRow(at: indexPath)?.textLabel?.text
+        mainTableView.deselectRow(at: indexPath, animated: true)
+        
+        performSegue(withIdentifier: "detailSegue", sender: indexPath)
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
