@@ -22,8 +22,9 @@ class DetailsViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        scrollView.delegate = self;
-        slides = getWsData(ville: villeRequete)
+        scrollView.delegate = self
+        let villeFormatted = villeRequete.replacingOccurrences(of: " ", with: "%20").replacingOccurrences(of: "é", with: "e").lowercased()
+        slides = getWsData(ville: villeFormatted)
         setupSlideScrollView(slides: slides)
         
         pageControl.numberOfPages = slides.count
@@ -31,11 +32,11 @@ class DetailsViewController: UIViewController, UIScrollViewDelegate {
         view.bringSubviewToFront(pageControl)
 
         
-        if(villeRequete != nil){
+        if(villeFormatted != nil){
             
             // Recherche et affichage de la ville selectionnée
             let geocoder = CLGeocoder()
-            geocoder.geocodeAddressString(villeRequete) { (placemarks:[CLPlacemark]?, error:Error?) in
+            geocoder.geocodeAddressString(villeFormatted) { (placemarks:[CLPlacemark]?, error:Error?) in
                 if error == nil {
                     
                     let placemark = placemarks?.first
@@ -110,8 +111,6 @@ class DetailsViewController: UIViewController, UIScrollViewDelegate {
         return [slide1, slide2];
     }
     
-    //https://stackoverflow.com/questions/34694377/swift-how-can-i-make-an-image-full-screen-when-clicked-and-then-original-size
-    
     @IBAction func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
         
         // let imageView = tapGestureRecognizer.view as! UIImageView
@@ -134,14 +133,10 @@ class DetailsViewController: UIViewController, UIScrollViewDelegate {
         self.tabBarController?.tabBar.isHidden = false
         sender.view?.removeFromSuperview()
     }
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    
+    
+    @IBAction func goBack(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     
 }

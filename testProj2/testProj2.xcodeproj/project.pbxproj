@@ -24,6 +24,7 @@
 		F2648B8B2211B89E00724A09 /* testProj2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2648B8A2211B89E00724A09 /* testProj2Tests.swift */; };
 		F2648B962211B89E00724A09 /* testProj2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2648B952211B89E00724A09 /* testProj2UITests.swift */; };
 		F2648BAA2211BE9200724A09 /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2648BA92211BE9200724A09 /* Shared.swift */; };
+		F2719906224E93180003C1F1 /* arrow-back.png in Resources */ = {isa = PBXBuildFile; fileRef = F2719905224E93180003C1F1 /* arrow-back.png */; };
 		F273122B22315AFA00F7C826 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F273122A22315AFA00F7C826 /* WeatherData.swift */; };
 		F283A71D2236ABC4006738DA /* newYork1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F283A71C2236ABC4006738DA /* newYork1.jpg */; };
 		F283A71F2236AC01006738DA /* newYork0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F283A71E2236AC01006738DA /* newYork0.jpg */; };
@@ -95,6 +96,7 @@
 		F2648B952211B89E00724A09 /* testProj2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testProj2UITests.swift; sourceTree = "<group>"; };
 		F2648B972211B89E00724A09 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F2648BA92211BE9200724A09 /* Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared.swift; sourceTree = "<group>"; };
+		F2719905224E93180003C1F1 /* arrow-back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-back.png"; sourceTree = "<group>"; };
 		F273122A22315AFA00F7C826 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 		F283A71C2236ABC4006738DA /* newYork1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = newYork1.jpg; sourceTree = "<group>"; };
 		F283A71E2236AC01006738DA /* newYork0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = newYork0.jpg; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 			children = (
 				F2DA96782244D65400795A8D /* meteo */,
 				F283A71C2236ABC4006738DA /* newYork1.jpg */,
+				F2719905224E93180003C1F1 /* arrow-back.png */,
 				F2F6F836224E8F0E00B0774D /* camera.png */,
 				F283A71E2236AC01006738DA /* newYork0.jpg */,
 				F283A7202236B9DB006738DA /* plusIcon.png */,
@@ -409,6 +412,7 @@
 				F2DA968B2244D66B00795A8D /* shower3.png in Resources */,
 				F2F6F837224E8F0E00B0774D /* camera.png in Resources */,
 				F2DA968E2244D66B00795A8D /* overcast.png in Resources */,
+				F2719906224E93180003C1F1 /* arrow-back.png in Resources */,
 				F2DA96842244D66B00795A8D /* chi_pas.png in Resources */,
 				F2DA96892244D66B00795A8D /* snow4.png in Resources */,
 				F2648B7D2211B89E00724A09 /* Assets.xcassets in Resources */,
